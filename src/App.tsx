@@ -39,6 +39,7 @@ function App() {
           summary="React is a JavaScript library for building user interfaces. It is maintained by Facebook and a community of individual developers and companies."
         />
       </div>
+      <h2 style={{ opacity: 0.5 }}>Made with ❤️ by Mitesh</h2>
     </>
   );
 }
