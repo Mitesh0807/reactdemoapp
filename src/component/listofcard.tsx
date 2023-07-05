@@ -3,6 +3,7 @@ import Card from "../ui/Card";
 import { useState } from "react";
 import React from "react";
 import Posts from "./Posts";
+import ShimmerCards from "./ShimmerCards";
 
 export interface PostI {
   id: string;
@@ -19,21 +20,19 @@ function ListOfCard(props: {
   // const [test, setTest] = useState<string[]>([]);
   const [count, setCount] = useState(0);
   const [post, setPosts] = useState<PostI[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     async function fetchData() {
       const data = await asyncData();
       setPosts(data);
+      setIsLoading(false);
       setCount(count + data?.length);
     }
     fetchData();
   }, []);
-  console.log(useState());
-
-  // const handleLearnMoreClick = () => {
-  //   setTest([...test, "Learn More"]);
-  // };
-
   async function asyncData() {
+    await new Promise((resolve) => setTimeout(resolve, 20000)); // 3 sec
+
     const response = await fetch("https://jsonplaceholder.typicode.com/posts");
     const data = await response.json();
     return data;
@@ -53,7 +52,7 @@ function ListOfCard(props: {
           {props.summary}
         </p>
         <p style={{ opacity: 0.5 }}>{count}</p>
-        <Posts posts={post} />
+        {isLoading ? <ShimmerCards /> : <Posts posts={post} />}
       </div>
     </Card>
   );

@@ -7,9 +7,11 @@ import state from "./assets/images/state.png";
 import { useState } from "react";
 function App() {
   const [title, setTitle] = useState("Key Concepts of React");
+
+  console.log(title, "render");
   const titleChange = () => {
-    setTitle(
-      title === "Key Concepts of React" ? "React ❤️" : "Key Concepts of React"
+    setTitle((prev) =>
+      prev === "Key Concepts of React" ? "React ❤️" : "Key Concepts of React"
     );
   };
   return (
@@ -19,9 +21,7 @@ function App() {
         <h1>{title}</h1>
         <h3 style={{ opacity: 0.5 }}>Made with ❤️ by Mitesh</h3>
       </header>
-      <button onClick={titleChange}>
-        Change ref to state rerender all child
-      </button>
+      <a onClick={titleChange}>Change ref to state rerender all child</a>
       <div id="concepts">
         <ListOfCard
           img={components}
@@ -39,7 +39,7 @@ function App() {
           summary="React is a JavaScript library for building user interfaces. It is maintained by Facebook and a community of individual developers and companies."
         />
       </div>
-      <h2 style={{ opacity: 0.5 }}>Made with ❤️ by Mitesh</h2>
+      <a style={{ opacity: 0.5 }}>Made with ❤️ by Mitesh</a>
     </>
   );
 }

@@ -2,6 +2,7 @@ import { memo } from "react";
 import { PostI } from "./listofcard";
 
 function Posts(props: any) {
+  console.log(props);
   return (
     <>
       <div>
